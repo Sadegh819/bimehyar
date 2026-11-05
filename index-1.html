@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#5425a8">
+<meta name="description" content="بیمه‌نما؛ راهنمای انتخاب و مقایسه مسیرهای استعلام بیمه">
+<title>بیمه‌نما | نسخه ۳</title>
+<style>
+:root{--purple:#6034b4;--purple2:#32145e;--blue:#2878df;--yellow:#ffd43b;--bg:#f5f4fa;--ink:#25213a;--muted:#77748b;--white:#fff;--line:#e9e5f1;--shadow:0 12px 35px #29134c12}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Tahoma,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.9}
+button,input,select{font:inherit}
+button{cursor:pointer}
+a{text-decoration:none;color:inherit}
+.container{width:min(1160px,92%);margin:auto}
+header{position:sticky;top:0;z-index:50;background:#fffF;backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{font-size:23px;font-weight:900;color:var(--purple2)}
+.brand span{color:#e5ad00}
+.navlinks{display:flex;gap:22px;align-items:center;font-size:13px;color:#5e5870}
+.navlinks a:hover{color:var(--purple)}
+.menu-btn{display:none;background:#f0eafa;color:var(--purple);padding:8px 12px;border-radius:10px}
+.hero{background:linear-gradient(125deg,#2b1554 0%,#6034b4 55%,#2878df 100%);color:#fff;padding:66px 0 76px;overflow:hidden;position:relative}
+.hero:after{content:"";position:absolute;width:340px;height:340px;border:55px solid #ffffff12;border-radius:50%;left:-100px;top:-150px}
+.hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1.5fr .8fr;align-items:center;gap:30px}
+.eyebrow{display:inline-block;background:#ffffff20;border:1px solid #ffffff35;padding:5px 12px;border-radius:30px;font-size:12px;margin-bottom:15px}
+.hero h1{font-size:clamp(29px,5vw,48px);line-height:1.55;margin-bottom:14px}
+.hero h1 span{color:var(--yellow)}
+.hero p{color:#eee8ff;max-width:650px;font-size:15px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
+.btn{display:inline-flex;justify-content:center;align-items:center;gap:7px;border:0;border-radius:12px;padding:11px 17px;font-weight:700;font-size:13px;transition:.2s}
+.btn:hover{transform:translateY(-2px);filter:brightness(.98)}
+.btn-yellow{background:var(--yellow);color:#34204e}
+.btn-light{background:#fff;color:var(--purple)}
+.btn-purple{background:var(--purple);color:#fff}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-soft{background:#f0eafa;color:var(--purple)}
+.hero-card{background:#ffffff18;border:1px solid #ffffff38;border-radius:25px;padding:24px;backdrop-filter:blur(8px)}
+.hero-card .big-icon{font-size:48px}
+.hero-card h3{margin:5px 0}
+.hero-card p{font-size:12px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px}
+.stat{background:#ffffff17;border-radius:13px;text-align:center;padding:10px 5px}
+.stat b{display:block;color:var(--yellow);font-size:18px}
+.stat small{font-size:10px;color:#eee}
+.section{padding:48px 0}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:15px;margin-bottom:22px}
+.section-head h2{font-size:24px;color:var(--purple2)}
+.section-head p{font-size:12px;color:var(--muted);margin-top:4px}
+.searchbar{display:flex;gap:10px;margin-bottom:20px}
+.searchbar input{flex:1;min-width:0;border:1px solid var(--line);border-radius:13px;padding:13px 15px;background:#fff;outline:none}
+.searchbar input:focus,.field input:focus,.field select:focus{border-color:var(--purple);box-shadow:0 0 0 3px #6034b418}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.filter{border:1px solid var(--line);background:#fff;color:#625c75;padding:8px 14px;border-radius:30px;font-size:12px}
+.filter.active{background:var(--purple);border-color:var(--purple);color:#fff}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.ins-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:19px;box-shadow:var(--shadow);transition:.2s;display:flex;flex-direction:column}
+.ins-card:hover{transform:translateY(-4px);border-color:#d4c4ef}
+.card-top{display:flex;justify-content:space-between;align-items:center}
+.ins-icon{width:48px;height:48px;display:grid;place-items:center;background:#f0eafa;border-radius:14px;font-size:25px}
+.fav{background:#f6f4fa;color:#9a91aa;border-radius:10px;padding:7px 10px;font-size:18px}
+.fav.on{color:#e34d76;background:#fff0f4}
+.ins-card h3{font-size:16px;margin:13px 0 5px}
+.ins-card p{font-size:12px;color:var(--muted);flex:1}
+.card-actions{display:flex;gap:8px;margin-top:16px}
+.card-actions button{flex:1}
+.empty{grid-column:1/-1;text-align:center;background:#fff;border-radius:16px;padding:30px;color:var(--muted)}
+.notice{margin-top:22px;background:#fff8dc;border:1px solid #f5e5a4;border-radius:15px;padding:15px 17px;font-size:12px;color:#65521b}
+.compare-wrap{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:var(--shadow)}
+.compare-select{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:18px}
+.compare-select select,.field input,.field select{border:1px solid var(--line);background:#fff;border-radius:11px;padding:11px 12px;outline:none;color:var(--ink)}
+.compare-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.provider{border:1px solid var(--line);border-radius:15px;padding:17px;text-align:center}
+.provider .provider-logo{font-weight:900;font-size:19px;margin-bottom:5px}
+.provider p{font-size:11px;color:var(--muted);min-height:48px}
+.provider .btn{width:100%;margin-top:12px}
+.provider.azki{border-top:4px solid #6034b4}
+.provider.bimeh{border-top:4px solid #2878df}
+.provider.bazar{border-top:4px solid #e7b600}
+.provider .tag{font-size:10px;background:#f4f1fa;color:var(--purple);border-radius:20px;padding:3px 8px;display:inline-block;margin-bottom:8px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.step{background:#fff;border:1px solid var(--line);padding:19px;border-radius:16px}
+.step b{color:var(--purple);display:block;margin-bottom:5px}
+.step p{font-size:12px;color:var(--muted)}
+.tools-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.tool-card{background:#fff;border:1px solid var(--line);border-radius:17px;padding:20px}
+.tool-card h3{font-size:16px;margin-bottom:10px}
+.field{display:flex;flex-direction:column;gap:5px;margin:10px 0}
+.field label{font-size:12px;color:#625c75}
+.field input,.field select{width:100%}
+.result{font-size:12px;color:var(--purple);margin-top:8px}
+.articles{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.article{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px}
+.article .emoji{font-size:28px}
+.article h3{font-size:14px;margin:8px 0}
+.article p{font-size:12px;color:var(--muted)}
+footer{background:#251143;color:#eee6ff;padding:35px 0 20px;margin-top:30px}
+.footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:25px}
+footer h3{color:var(--yellow);margin-bottom:9px}
+footer p,footer a{font-size:12px;color:#d5cce7}
+footer a{display:block;margin:4px 0}
+.copyright{text-align:center;border-top:1px solid #ffffff20;margin-top:25px;padding-top:15px;font-size:11px;color:#bcb0d2}
+.modal{display:none;position:fixed;inset:0;background:#160c2dcc;z-index:100;align-items:center;justify-content:center;padding:18px}
+.modal.show{display:flex}
+.modal-box{background:#fff;width:min(470px,100%);border-radius:20px;padding:23px;box-shadow:0 20px 70px #0004}
+.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.close{background:#f1eef6;color:#55466e;border-radius:9px;padding:5px 11px;font-size:19px}
+.modal-box p{font-size:12px;color:var(--muted);margin-bottom:13px}
+.provider-choice{display:flex;align-items:center;justify-content:space-between;border:1px solid var(--line);border-radius:12px;padding:12px;margin-top:9px;cursor:pointer}
+.provider-choice:hover{border-color:var(--purple);background:#faf8ff}
+.provider-choice b{font-size:14px}
+.provider-choice small{display:block;color:var(--muted);font-size:10px}
+.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,100px);background:#28134c;color:white;padding:11px 18px;border-radius:12px;font-size:12px;z-index:150;transition:.3s;box-shadow:var(--shadow)}
+.toast.show{transform:translate(-50%,0)}
+.admin{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px}
+.admin small{color:var(--muted)}
+@media(max-width:800px){.hero-inner{grid-template-columns:1fr}.hero-card{max-width:430px}.cards{grid-template-columns:repeat(2,1fr)}.navlinks{display:none}.menu-btn{display:block}.navlinks.open{display:flex;position:absolute;top:72px;right:0;left:0;background:#fff;padding:18px 5%;flex-direction:column;box-shadow:var(--shadow)}}
+@media(max-width:560px){.hero{padding:48px 0}.cards,.compare-grid,.steps,.articles,.tools-grid,.footer-grid{grid-template-columns:1fr}.section{padding:35px 0}.section-head{align-items:start;flex-direction:column}.searchbar{flex-direction:column}.card-actions{flex-direction:column}.stats{gap:6px}.stat b{font-size:15px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="brand" href="#">بیمه<span>‌نما</span></a>
+    <button class="menu-btn" id="menuBtn" aria-label="باز کردن منو">☰</button>
+    <nav class="navlinks" id="navLinks">
+      <a href="#home">خانه</a><a href="#insurance">بیمه‌ها</a><a href="#compare">مقایسه</a>
+      <a href="#tools">ابزارها</a><a href="#articles">راهنما</a><a href="#about">درباره ما</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+ <div class="container hero-inner">
+  <div>
+   <span class="eyebrow">نسخه ۳ · راهنمای هوشمند انتخاب بیمه</span>
+   <h1>انتخاب آگاهانه‌تر،<br><span>با بیمه‌نما</span></h1>
+   <p>نوع بیمه موردنظرت را پیدا کن، اطلاعاتش را بررسی کن و برای استعلام قیمت به یکی از ارائه‌دهندگان منتخب برو. بیمه‌نما قیمت‌سازی نمی‌کند؛ قیمت نهایی در وب‌سایت ارائه‌دهنده مشخص می‌شود.</p>
+   <div class="hero-actions">
+    <a class="btn btn-yellow" href="#insurance">مشاهده بیمه‌ها ←</a>
+    <a class="btn btn-light" href="#compare">مقایسه ارائه‌دهندگان</a>
+   </div>
+  </div>
+  <div class="hero-card">
+   <div class="big-icon">🛡️</div>
+   <h3>همه مسیرها، یک‌جا</h3>
+   <p>پس از انتخاب بیمه، مقصد استعلام را خودت انتخاب می‌کنی.</p>
+   <div class="stats">
+    <div class="stat"><b>۳</b><small>مسیر استعلام</small></div>
+    <div class="stat"><b>۱</b><small>انتخاب آگاهانه</small></div>
+    <div class="stat"><b>۲۴/۷</b><small>دسترسی به سایت</small></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="insurance">
+ <div class="container">
+  <div class="section-head"><div><h2>بیمه‌های قابل بررسی</h2><p>بیمه موردنظر را انتخاب کن تا مسیرهای استعلام را ببینی.</p></div></div>
+  <div class="searchbar">
+   <input id="searchInput" type="search" placeholder="جست‌وجوی بیمه؛ مثلاً شخص ثالث، عمر، آتش‌سوزی..." aria-label="جست‌وجوی بیمه">
+   <button class="btn btn-purple" id="searchBtn">جست‌وجو</button>
+  </div>
+  <div class="filters" id="filters">
+   <button class="filter active" data-category="همه">همه</button>
+   <button class="filter" data-category="خودرو">خودرو</button>
+   <button class="filter" data-category="زندگی">زندگی</button>
+   <button class="filter" data-category="درمان">درمان</button>
+   <button class="filter" data-category="اموال">اموال</button>
+   <button class="filter" data-category="مسئولیت">مسئولیت</button>
+  </div>
+  <div class="cards" id="insuranceCards"></div>
+  <div class="notice">توجه: بیمه‌نما در این نسخه واسطه صدور بیمه‌نامه نیست. اطلاعات و قیمت نهایی، شرایط پوشش و اعتبار پیشنهاد را در سایت رسمی ارائه‌دهنده بررسی کن.</div>
+ </div>
+</section>
+
+<section class="section" id="compare">
+ <div class="container">
+  <div class="section-head"><div><h2>مقایسه مسیرهای استعلام</h2><p>یک نوع بیمه را انتخاب کن و آن را در سه ارائه‌دهنده بررسی کن.</p></div></div>
+  <div class="compare-wrap">
+   <div class="compare-select">
+    <label for="compareInsurance">نوع بیمه:</label>
+    <select id="compareInsurance"></select>
+    <span style="font-size:11px;color:#777">مقایسه قیمت زنده در این نسخه فعال نیست.</span>
+   </div>
+   <div class="compare-grid" id="providerGrid"></div>
+  </div>
+ </div>
+</section>
+
+<section class="section">
+ <div class="container">
+  <div class="section-head"><div><h2>چطور از بیمه‌نما استفاده کنی؟</h2><p>سه مرحله ساده برای رسیدن به صفحه استعلام.</p></div></div>
+  <div class="steps">
+   <div class="step"><b>۱. انتخاب نوع بیمه</b><p>از فهرست بیمه‌ها یا جست‌وجو، گزینه موردنظر را پیدا کن.</p></div>
+   <div class="step"><b>۲. انتخاب ارائه‌دهنده</b><p>ازکی، بیمه‌دات‌کام یا بیمه‌بازار را برای ادامه انتخاب کن.</p></div>
+   <div class="step"><b>۳. بررسی شرایط</b><p>در وب‌سایت مقصد، اطلاعات، قیمت و شرایط نهایی را بررسی کن.</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="tools">
+ <div class="container">
+  <div class="section-head"><div><h2>ابزارهای کاربردی</h2><p>ابزارهای ساده برای مدیریت یادآوری بیمه.</p></div></div>
+  <div class="tools-grid">
+   <div class="tool-card">
+    <h3>📅 یادآور تاریخ انقضای بیمه</h3>
+    <p style="font-size:12px;color:#777">تاریخ پایان بیمه‌نامه‌ات را وارد کن تا زمان باقی‌مانده را ببینی.</p>
+    <div class="field"><label for="expiryDate">تاریخ انقضا</label><input type="date" id="expiryDate"></div>
+    <button class="btn btn-blue" id="checkExpiry">بررسی تاریخ</button>
+    <div class="result" id="expiryResult"></div>
+   </div>
+   <div class="tool-card">
+    <h3>⭐ علاقه‌مندی‌ها</h3>
+    <p style="font-size:12px;color:#777">بیمه‌های موردعلاقه را با علامت قلب ذخیره کن. ذخیره‌سازی روی همین مرورگر انجام می‌شود.</p>
+    <div class="result" id="favoriteSummary">هنوز موردی ذخیره نشده است.</div>
+    <button class="btn btn-soft" id="showFavorites" style="margin-top:12px">نمایش علاقه‌مندی‌ها</button>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="articles">
+ <div class="container">
+  <div class="section-head"><div><h2>راهنمای انتخاب بیمه</h2><p>چند نکته برای تصمیم‌گیری بهتر.</p></div></div>
+  <div class="articles">
+   <article class="article"><div class="emoji">🚗</div><h3>بیمه شخص ثالث چیست؟</h3><p>بیمه شخص ثالث خسارت‌های جانی و مالی واردشده به اشخاص ثالث را طبق شرایط و تعهدات بیمه‌نامه پوشش می‌دهد.</p></article>
+   <article class="article"><div class="emoji">🏠</div><h3>چرا بیمه آتش‌سوزی مهم است؟</h3><p>این بیمه می‌تواند ساختمان و اموال بیمه‌شده را در برابر خطرات درج‌شده در بیمه‌نامه حمایت کند.</p></article>
+   <article class="article"><div class="emoji">❤️</div><h3>در انتخاب بیمه عمر به چه نکاتی توجه کنیم؟</h3><p>مدت قرارداد، پوشش‌ها، استثناها، حق‌بیمه و شرایط بازخرید را با دقت بررسی کن.</p></article>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="about">
+ <div class="container">
+  <div class="admin">
+   <h2 style="color:#32145e;font-size:20px;margin-bottom:8px">درباره بیمه‌نما</h2>
+   <p style="font-size:13px;color:#777">بیمه‌نما یک راهنمای معرفی و مقایسه مسیرهای استعلام بیمه است. این وب‌سایت در نسخه فعلی قیمت زنده دریافت نمی‌کند و به API اختصاصی شرکت‌ها متصل نیست. نام و نشان ارائه‌دهندگان متعلق به صاحبان آن‌هاست.</p>
+   <p style="font-size:11px;color:#999;margin-top:10px">اطلاعات علاقه‌مندی‌ها فقط در حافظه مرورگر همین دستگاه ذخیره می‌شود.</p>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="container">
+  <div class="footer-grid">
+   <div><h3>بیمه‌نما</h3><p>مسیر ساده‌تر برای شناخت بیمه‌ها و رفتن به صفحه استعلام ارائه‌دهندگان.</p></div>
+   <div><h3>دسترسی سریع</h3><a href="#insurance">فهرست بیمه‌ها</a><a href="#compare">مقایسه ارائه‌دهندگان</a><a href="#tools">ابزارهای کاربردی</a></div>
+   <div><h3>ارائه‌دهندگان</h3><a href="https://www.azki.com/" target="_blank" rel="noopener noreferrer">ازکی</a><a href="https://bimeh.com/" target="_blank" rel="noopener noreferrer">بیمه‌دات‌کام</a><a href="https://bimehbazar.com/" target="_blank" rel="noopener noreferrer">بیمه‌بازار</a></div>
+  </div>
+  <div class="copyright">© بیمه‌نما — نسخه ۳ | استفاده از این وب‌سایت به معنی تأیید قیمت یا شرایط هیچ ارائه‌دهنده‌ای نیست.</div>
+ </div>
+</footer>
+
+<div class="modal" id="destinationModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+ <div class="modal-box">
+  <div class="modal-head"><h3 id="modalTitle">انتخاب مقصد استعلام</h3><button class="close" id="closeModal" aria-label="بستن">×</button></div>
+  <p id="modalDescription">برای ادامه، یکی از ارائه‌دهندگان زیر را انتخاب کن.</p>
+  <div id="destinationChoices"></div>
+ </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+"use strict";
+
+const providers = [
+ {id:"azki",name:"ازکی",url:"https://www.azki.com/",className:"azki",description:"ورود به وب‌سایت ازکی برای بررسی شرایط و استعلام"},
+ {id:"bimeh",name:"بیمه‌دات‌کام",url:"https://bimeh.com/",className:"bimeh",description:"ورود به وب‌سایت بیمه‌دات‌کام برای بررسی شرایط و استعلام"},
+ {id:"bazar",name:"بیمه‌بازار",url:"https://bimehbazar.com/",className:"bazar",description:"ورود به وب‌سایت بیمه‌بازار برای بررسی شرایط و استعلام"}
+];
+
+const insurances = [
+ {id:"third",name:"بیمه شخص ثالث خودرو",category:"خودرو",icon:"🚘",description:"بررسی پوشش خسارت‌های واردشده به اشخاص ثالث در حوادث رانندگی."},
+ {id:"body",name:"بیمه بدنه خودرو",category:"خودرو",icon:"🚗",description:"بررسی پوشش‌های خسارت واردشده به خودروی بیمه‌شده."},
+ {id:"motor",name:"بیمه شخص ثالث موتور",category:"خودرو",icon:"🏍️",description:"بررسی شرایط بیمه مسئولیت دارندگان موتورسیکلت."},
+ {id:"life",name:"بیمه عمر",category:"زندگی",icon:"❤️",description:"بررسی پوشش‌ها، مدت قرارداد و شرایط بیمه عمر."},
+ {id:"medical",name:"بیمه درمان تکمیلی",category:"درمان",icon:"🩺",description:"بررسی تعهدات درمانی، سقف پوشش و مراکز طرف قرارداد."},
+ {id:"fire",name:"بیمه آتش‌سوزی ساختمان",category:"اموال",icon:"🏠",description:"بررسی پوشش ساختمان و اموال در برابر خطرات بیمه‌شده."},
+ {id:"travel",name:"بیمه مسافرتی",category:"درمان",icon:"✈️",description:"بررسی پوشش‌های درمانی و خدمات سفر در مقصد."},
+ {id:"liability",name:"بیمه مسئولیت",category:"مسئولیت",icon:"🛡️",description:"بررسی تعهدات و مسئولیت‌های قابل بیمه‌شدن."},
+ {id:"earthquake",name:"بیمه زلزله",category:"اموال",icon:"🏢",description:"بررسی پوشش خسارت‌های ناشی از زلزله طبق شرایط بیمه‌نامه."}
+];
+
+const STORAGE_KEY = "bimenama_v3_favorites";
+let selectedInsurance = insurances[0].id;
+let activeCategory = "همه";
+let favorites = loadFavorites();
+let showOnlyFavorites = false;
+let pendingInsuranceId = null;
+
+function loadFavorites(){
+  try{
+    const data = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+    return Array.isArray(data) ? data : [];
+  }catch(e){return [];}
+}
+function saveFavorites(){
+  try{localStorage.setItem(STORAGE_KEY,JSON.stringify(favorites));}
+  catch(e){showToast("ذخیره‌سازی در این مرورگر در دسترس نیست.");}
+  updateFavoriteSummary();
+}
+function showToast(message){
+  const toast=document.getElementById("toast");
+  toast.textContent=message;
+  toast.classList.add("show");
+  clearTimeout(showToast.timer);
+  showToast.timer=setTimeout(()=>toast.classList.remove("show"),2600);
+}
+function escapeHTML(value){
+  return String(value).replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
+}
+function renderCards(){
+  const query=document.getElementById("searchInput").value.trim().toLowerCase();
+  const list=insurances.filter(item=>{
+    const matchesCategory=activeCategory==="همه"||item.category===activeCategory;
+    const matchesQuery=(item.name+" "+item.category+" "+item.description).toLowerCase().includes(query);
+    const matchesFavorite=!showOnlyFavorites||favorites.includes(item.id);
+    return matchesCategory&&matchesQuery&&matchesFavorite;
+  });
+  const root=document.getElementById("insuranceCards");
+  if(!list.length){
+    root.innerHTML='<div class="empty">موردی پیدا نشد. عبارت جست‌وجو یا دسته‌بندی را تغییر بده.</div>';
+    return;
+  }
+  root.innerHTML=list.map(item=>`
+    <article class="ins-card">
+      <div class="card-top">
+        <div class="ins-icon">${item.icon}</div>
+        <button class="fav ${favorites.includes(item.id)?"on":""}" data-fav="${item.id}" aria-label="افزودن به علاقه‌مندی‌ها">${favorites.includes(item.id)?"♥":"♡"}</button>
+      </div>
+      <h3>${escapeHTML(item.name)}</h3>
+      <p>${escapeHTML(item.description)}</p>
+      <div class="card-actions">
+        <button class="btn btn-purple" data-choose="${item.id}">انتخاب ارائه‌دهنده</button>
+        <button class="btn btn-soft" data-compare="${item.id}">مقایسه</button>
+      </div>
+    </article>`).join("");
+}
+function renderCompareOptions(){
+  const select=document.getElementById("compareInsurance");
+  select.innerHTML=insurances.map(i=>`<option value="${i.id}">${escapeHTML(i.name)}</option>`).join("");
+  select.value=selectedInsurance;
+  renderProviders();
+}
+function renderProviders(){
+  const item=insurances.find(i=>i.id===selectedInsurance)||insurances[0];
+  document.getElementById("providerGrid").innerHTML=providers.map(p=>`
+    <div class="provider ${p.className}">
+      <span class="tag">مسیر استعلام</span>
+      <div class="provider-logo">${p.name}</div>
+      <p>${escapeHTML(item.name)}<br>${p.description}</p>
+      <button class="btn ${p.id==="azki"?"btn-purple":p.id==="bimeh"?"btn-blue":"btn-yellow"}" data-provider="${p.id}">رفتن به ${p.name}</button>
+    </div>`).join("");
+}
+function openDestination(insuranceId){
+  const item=insurances.find(i=>i.id===insuranceId);
+  if(!item)return;
+  pendingInsuranceId=insuranceId;
+  document.getElementById("modalTitle").textContent="انتخاب مقصد استعلام";
+  document.getElementById("modalDescription").textContent="برای «"+item.name+"» کدام وب‌سایت را می‌خواهی باز کنی؟";
+  document.getElementById("destinationChoices").innerHTML=providers.map(p=>`
+    <div class="provider-choice" data-destination="${p.id}" role="button" tabindex="0">
+      <div><b>${p.name}</b><small>${p.description}</small></div><span>←</span>
+    </div>`).join("");
+  document.getElementById("destinationModal").classList.add("show");
+}
+function goToProvider(providerId){
+  const provider=providers.find(p=>p.id===providerId);
+  if(!provider)return;
+  // لینک‌ها به صفحه اصلی ارائه‌دهنده باز می‌شوند؛ استعلام همان محصول را در سایت مقصد انجام دهید.
+  window.open(provider.url,"_blank","noopener,noreferrer");
+  document.getElementById("destinationModal").classList.remove("show");
+}
+function updateFavoriteSummary(){
+  const count=favorites.length;
+  document.getElementById("favoriteSummary").textContent=count?count+" بیمه در علاقه‌مندی‌ها ذخیره شده است.":"هنوز موردی ذخیره نشده است.";
+}
+document.getElementById("insuranceCards").addEventListener("click",event=>{
+  const favButton=event.target.closest("[data-fav]");
+  const chooseButton=event.target.closest("[data-choose]");
+  const compareButton=event.target.closest("[data-compare]");
+  if(favButton){
+    const id=favButton.dataset.fav;
+    favorites=favorites.includes(id)?favorites.filter(x=>x!==id):[...favorites,id];
+    saveFavorites();renderCards();
+  }
+  if(chooseButton)openDestination(chooseButton.dataset.choose);
+  if(compareButton){
+    selectedInsurance=compareButton.dataset.compare;
+    document.getElementById("compareInsurance").value=selectedInsurance;
+    renderProviders();
+    document.getElementById("compare").scrollIntoView({behavior:"smooth"});
+  }
+});
+document.getElementById("filters").addEventListener("click",event=>{
+  const button=event.target.closest("[data-category]");
+  if(!button)return;
+  activeCategory=button.dataset.category;
+  showOnlyFavorites=false;
+  document.querySelectorAll(".filter").forEach(b=>b.classList.toggle("active",b===button));
+  renderCards();
+});
+document.getElementById("searchInput").addEventListener("input",renderCards);
+document.getElementById("searchBtn").addEventListener("click",renderCards);
+document.getElementById("compareInsurance").addEventListener("change",event=>{
+  selectedInsurance=event.target.value;renderProviders();
+});
+document.getElementById("providerGrid").addEventListener("click",event=>{
+  const button=event.target.closest("[data-provider]");
+  if(button)goToProvider(button.dataset.provider);
+});
+document.getElementById("destinationChoices").addEventListener("click",event=>{
+  const choice=event.target.closest("[data-destination]");
+  if(choice)goToProvider(choice.dataset.destination);
+});
+document.getElementById("destinationChoices").addEventListener("keydown",event=>{
+  if(event.key==="Enter"||event.key===" "){
+    const choice=event.target.closest("[data-destination]");
+    if(choice){event.preventDefault();goToProvider(choice.dataset.destination);}
+  }
+});
+document.getElementById("closeModal").addEventListener("click",()=>document.getElementById("destinationModal").classList.remove("show"));
+document.getElementById("destinationModal").addEventListener("click",event=>{
+  if(event.target.id==="destinationModal")event.currentTarget.classList.remove("show");
+});
+document.getElementById("checkExpiry").addEventListener("click",()=>{
+  const value=document.getElementById("expiryDate").value;
+  const result=document.getElementById("expiryResult");
+  if(!value){result.textContent="لطفاً تاریخ انقضا را وارد کن.";return;}
+  const today=new Date();today.setHours(0,0,0,0);
+  const expiry=new Date(value+"T00:00:00");
+  const days=Math.ceil((expiry-today)/86400000);
+  if(Number.isNaN(expiry.getTime())){result.textContent="تاریخ واردشده معتبر نیست.";return;}
+  if(days<0)result.textContent="تاریخ واردشده گذشته است.";
+  else if(days===0)result.textContent="تاریخ انقضا امروز است.";
+  else result.textContent=days+" روز تا تاریخ انقضا باقی مانده است.";
+});
+document.getElementById("showFavorites").addEventListener("click",()=>{
+  showOnlyFavorites=true;activeCategory="همه";
+  document.querySelectorAll(".filter").forEach(b=>b.classList.toggle("active",b.dataset.category==="همه"));
+  document.getElementById("searchInput").value="";
+  renderCards();
+  document.getElementById("insurance").scrollIntoView({behavior:"smooth"});
+});
+document.getElementById("menuBtn").addEventListener("click",()=>{
+  document.getElementById("navLinks").classList.toggle("open");
+});
+document.querySelectorAll("#navLinks a").forEach(a=>a.addEventListener("click",()=>{
+  document.getElementById("navLinks").classList.remove("open");
+}));
+
+// آغاز برنامه
+renderCards();
+renderCompareOptions();
+updateFavoriteSummary();
+</script>
+</body>
+</html>
